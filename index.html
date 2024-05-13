@@ -8,8 +8,16 @@
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
-    <a href="https://carlpuccino.github.io/jumpBuild/mobileVersion.html" class="mobileLink" target="_blank">
-      <button class="mobileBtn">Lien vers version mobile</button></a>
+    <div id="gears">
+        <img class="gearTrio trio1" src="TemplateData/gearsTrio.png">
+        <img class="gearTrio trio2" src="TemplateData/gearsTrio.png">
+        <img class="gearTrio trio3" src="TemplateData/gearsTrio.png">
+        <img class="gearTrio trio4" src="TemplateData/gearsTrio.png">
+        <img class="gearTrio trio5" src="TemplateData/gearsTrio.png">
+        <img class="gearDuo duo1" src="TemplateData/gearsDuo.png">
+        <img class="gearDuo duo2" src="TemplateData/gearsDuo.png">
+      </div>
+
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
@@ -18,13 +26,14 @@
           <div id="unity-progress-bar-full"></div>
         </div>
       </div>
+
       <div id="unity-warning"> </div>
       <div id="unity-footer">
         <!--<div id="unity-webgl-logo"></div>-->
        <!-- <div id="unity-fullscreen-button"></div>-->
         <!--<div id="unity-build-title">JUMP</div>-->
       </div>
-    </div>
+    </div>      
     <script>
 
       var container = document.querySelector("#unity-container");
@@ -33,7 +42,7 @@
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       //var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var warningBanner = document.querySelector("#unity-warning");
-      var mobileLink = document.querySelector(".mobileLink");
+      var gears = document.querySelector("#gears");
 
       // Shows a temporary message banner/ribbon for a few seconds, or
       // a permanent error message on top of the canvas if type=='error'.
@@ -92,7 +101,6 @@
           document.getElementsByTagName('head')[0].appendChild(meta);
           container.className = "unity-mobile";
           canvas.className = "unity-mobile";
-          mobileLink.style.display = "none";
         // To lower canvas resolution on mobile devices to gain some
         // performance, uncomment the following line:
         // config.devicePixelRatio = 1;
@@ -108,7 +116,6 @@
       }
       if(canvas.style.display != "none"){
         loadingBar.style.display = "block";
-        mobileLink.style.display = "none";
               var script = document.createElement("script");
               script.src = loaderUrl;
               script.onload = () => {
