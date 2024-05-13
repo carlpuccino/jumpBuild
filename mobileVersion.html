@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
-    <a href="https://carlpuccino.github.io/jumpBuild/mobileVersion.html" class="mobileLink">
+    <a href="https://carlpuccino.github.io/jumpBuild/index.html" class="mobileLink">
       <button class="mobileBtn">Lien vers version mobile</button></a>
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
@@ -81,11 +81,13 @@
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
 
-          canvas.style.display = "none";
-          console.log("canvas shouldnt be there");
-          mobileLink.style.top = "50%";
-          mobileLink.style.left = "50%";
-          mobileLink.style.transform = "translate(-50%, -50%)";
+          var meta = document.createElement('meta');
+          meta.name = 'viewport';
+          meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+          document.getElementsByTagName('head')[0].appendChild(meta);
+          container.className = "unity-mobile";
+          canvas.className = "unity-mobile";
+          mobileLink.style.display = "none";
         // To lower canvas resolution on mobile devices to gain some
         // performance, uncomment the following line:
         // config.devicePixelRatio = 1;
